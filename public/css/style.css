@@ -1,0 +1,14 @@
+body {
+  padding: 50px 10px;
+  padding-top: 60px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+.json-field {
+  min-height: 300px; }
+
+.inline-radio {
+  margin-right: 20px;
+  margin-bottom: 10px; }

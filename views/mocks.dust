@@ -1,0 +1,43 @@
+{>page/}
+{<content}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-right">
+                <a href="/mocks/create">
+                    <button class="btn btn-primary">Create New Mock</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="container-fluid">
+        <table class="mocks-table table">
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Author</th>
+                <th>Component</th>
+                <th>Product</th>
+                <th>Endpoint</th>
+                <th>Method/Code</th>
+                <th>Delay</th>
+                <th class="text-right">Options</th>
+            </tr>
+            {#mocks}
+                <tr>
+                    <td>{name}</td>
+                    <td>{metadata.description}</td>
+                    <td>{metadata.author}</td>
+                    <td>{component.name}</td>
+                    <td>{component.product}</td>
+                    <td>{context_root}/mockapi/mock/{_id}</td>
+                    <td>{response.method}/{response.code}</td>
+                    <td>{response.delay}ms</td>
+                    <td class="text-right"><a href="/mockapi/mock/{_id}"><button class="btn btn-success">View</button></a>&nbsp;
+                        <a href="/mocks/edit/{_id}"</a><button class="btn btn-warning">Edit</button></a></td>
+                </tr>
+            {/mocks}
+        </table>
+    </div>
+    <div id="reactContainer"></div>
+{/content}
