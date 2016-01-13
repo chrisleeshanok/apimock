@@ -9,6 +9,7 @@
         <script type="text/javascript" src="/public/js/vendor.js"></script>
         <script id='CONTEXT_ROOT' type='application/json'>{context_root}</script>
         <script id='currentMock' type='application/json'>{mock|s}</script>
+        <script id='currentMethods' type='application/json'>{methods|s}</script>
     </head>
     <body>
         <nav class="x1-ui-top-navigation navbar navbar-inverse navbar-fixed-top" role="navigation">

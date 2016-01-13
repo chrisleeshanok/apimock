@@ -10,6 +10,7 @@ var nconf = require('nconf');
 var indexrouter = require('./routes/index');
 var mock_api_router = require('./routes/api/mockapi');
 var api_router = require('./routes/api/mock');
+var method_api_router = require('./routes/api/methods');
 var mocks_router = require('./routes/mocks');
 
 
@@ -49,6 +50,7 @@ app.use('/public', express.static(__dirname + '/public'));
 //Routes
 app.use(mock_api_router);  // (/mockapi/mock/:mockid)
 app.use(api_router);  // (/api/mock/:mockid)
+app.use(method_api_router);  // (/api/method/:methodid)
 app.use(mocks_router); // (/api/mocks)
 
 // error handlers

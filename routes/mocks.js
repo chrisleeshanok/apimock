@@ -4,6 +4,7 @@ var router = express.Router();
 
 //Mongoose Schema
 var Mock = require('../models/mock');
+var Method = require('../models/method');
 
 router.route('/mocks')
 
@@ -51,9 +52,22 @@ router.route('/mocks/edit/:mockid')
                 "message": "No mock data found by this id"
             });
         } else {
-            res.render('mocks_edit', {
-                "mock": JSON.stringify(mock),
-                "context_root": nconf.get('gallery_api').CONTEXT_ROOT
+
+            //Now fetch Methods related to this mockid
+            Method.find({endpointId: mock.id}).exec(function(methodErr, methods) {
+                if (methodErr) {
+                    res.status(500).json({
+                        "code": 500,
+                        "status": 'Error Fetching Methods',
+                        "message": "Unable to fetch methods for this endpoint"
+                    });
+                }
+
+                res.render('mocks_edit', {
+                    "mock": JSON.stringify(mock),
+                    "methods": JSON.stringify(methods),
+                    "context_root": nconf.get('gallery_api').CONTEXT_ROOT
+                });
             });
         }
     });

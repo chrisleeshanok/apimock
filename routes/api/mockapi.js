@@ -3,29 +3,73 @@ var router = express.Router();
 
 //Mongoose Schema
 var Mock = require('../../models/mock');
+var Method = require('../../models/method');
 
 router.route('/mockapi/mock/:mockid')
 
 .all(function(req, res, next) {
-
     Mock.findById(req.params.mockid, function(err, mock) {
-
         if (err) {
             res.status(404).json({
                 "code": 404,
                 "status": 'Not Found',
                 "message": "No mock data found by this id"
             });
+        } else {
+
+            //Now fetch Methods related to this mockid
+            Method.find({endpointId: mock.id}).exec(function(methodErr, methods) {
+                if (methodErr) {
+                    res.status(404).json({
+                        "code": 404,
+                        "status": 'Not Found',
+                        "message": "No mock data found by this id"
+                    });
+                }
+
+                if (methods.length < 1) {
+                    res.status(404).json({
+                        "code": 404,
+                        "status": 'No Methods found',
+                        "message": "No methods were found for this mock"
+                    });
+                }
+
+                var i;
+                var method;
+                for (i = 0; i < methods.length; i++) {
+                    if (methods[i].method == req.method) {
+                        method = methods[i];
+                        break;
+                    }
+                }
+
+                if (!method.code) {
+                    method.code = 200; //Fallback
+                }
+
+                res.status(method.code).json(method.data);
+            });
         }
-
-        var responseCode = mock.response.code;
-
-        if (!responseCode) {
-            responseCode = 200; //Fallback
-        }
-
-        res.status(responseCode).json(mock.response.data);
     });
+    // Mock.findById(req.params.mockid, function(err, mock) {
+    //
+    //     if (err) {
+    //         res.status(404).json({
+    //             "code": 404,
+    //             "status": 'Not Found',
+    //             "message": "No mock data found by this id"
+    //         });
+    //     }
+    //
+    //     var responseCode = mock.response.code;
+    //
+    //     if (!responseCode) {
+    //         responseCode = 200; //Fallback
+    //     }
+    //
+    //     res.status(responseCode).json(mock.response.data);
+    // });
 });
 
 router.route('/mockapi/mock')

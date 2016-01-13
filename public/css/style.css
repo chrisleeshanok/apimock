@@ -13,6 +13,10 @@ a {
   color: #00B7FF; }
 
 .json-field {
+  min-height: 150px;
+  font-size: 0.9em; }
+
+.json-field-edit {
   min-height: 220px;
   font-size: 0.9em; }
 

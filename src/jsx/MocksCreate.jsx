@@ -130,12 +130,12 @@ var MocksCreate = React.createClass({
                     </div>
                     <div className="row">
                         <div className="col-md-12">
-                            <h3>Mock Response Data</h3>
+                            <h3>Base Response Data</h3>
                             <p>Enter <strong>VALID</strong> JSON below. This is the data that your endpoint will return as a JSON response.</p>
                             <p>Note: Current lack of a validator will cause your request to fail.</p>
                             <div className="form-group">
                                 <label htmlFor="mockResponseData">Response Data (REQUIRED)</label>
-                                <textarea className="form-control json-field" id="mockResponseData" placeholder="Enter valid JSON here" ref="responseData" name="responseData" defaultValue={JSON.stringify(defaultJSON)}>
+                                <textarea className="form-control json-field-edit" id="mockResponseData" placeholder="Enter valid JSON here" ref="responseData" name="responseData" defaultValue={JSON.stringify(defaultJSON)}>
                                 </textarea>
                             </div>
                         </div>

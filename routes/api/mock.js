@@ -3,6 +3,7 @@ var router = express.Router();
 
 //Mongoose Schema
 var Mock = require('../../models/mock');
+var Method = require('../../models/method');
 
 router.route('/api/mock/:mockid')
 
@@ -113,6 +114,17 @@ router.route('/api/mock')
     var newMock = Mock(mockData);
     newMockId = newMock.id;
 
+    //Now create a method document
+    var methodData = {
+        "endpointId": newMock._id,
+        "method": req.body.responseMethod,
+        "code": req.body.responseCode,
+        "data": JSON.parse(req.body.responseData)
+    };
+
+    var newMethod = Method(methodData);
+
+    //TODO: USE ASYNC AND GET THESE TWO DOC CREATES IN SERIES
     newMock.save(function(err, mock) {
         if (err) {
             res.status(500).json({
@@ -122,12 +134,23 @@ router.route('/api/mock')
             });
         }
 
+        newMethod.save(function(err, method) {
+            if (err) {
+                res.status(500).json({
+                    "code": 500,
+                    "status": 'Unable to save new Mock',
+                    "error": err
+                });
+            }
+        });
+
         res.json({
             "code": 200,
             "status": "success",
             "message": "Successfully created new Mock with id " + mock.id,
             "result": mock
         });
+
     });
 })
 

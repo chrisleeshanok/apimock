@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var methodDataScheme = new Schema({
-    endpointId: { type: ObjectId, required: true }
+    endpointId: Schema.Types.ObjectId,
     method: { type: String, required: true },
     code: { type: String, required: true },
-    data: { type: Object, required: true }
+    data: { type: Object, required: true },
     created: { type: Date },
     modified: { type: Date }
 });
