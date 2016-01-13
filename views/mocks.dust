@@ -29,8 +29,9 @@
                     <td>{component.name}</td>
                     <td>{component.product}</td>
                     <td>{context_root}/mockapi/mock/{_id}</td>
-                    <td class="text-right"><a href="/mockapi/mock/{_id}"><button class="btn btn-success">View</button></a>&nbsp;
-                        <a href="/mocks/edit/{_id}"</a><button class="btn btn-warning">Edit</button></a></td>
+                    <td class="text-right">
+                        <a href="/mocks/edit/{_id}"</a><button class="btn btn-warning">Edit</button></a>
+                    </td>
                 </tr>
             {/mocks}
         </table>

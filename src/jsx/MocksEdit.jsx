@@ -60,11 +60,16 @@ var MocksEdit = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-12">
+                    <div className="col-md-9">
                         <h1>Update {this.props.mock.name}</h1>
-                        <hr/>
+                        <p>{this.props.context_root + '/mockapi/mock/' + this.state.mock._id}</p>
+
+                    </div>
+                    <div className="col-md-3 text-right">
+                        <button style={{marginTop: '20px'}} onClick={this.cancelForm} type="submit" className="btn btn-secondary">Back</button>
                     </div>
                 </div>
+                <hr/>
                 <div className="row">
                     <div className="col-md-6">
                         <h3>Basics</h3>

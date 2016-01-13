@@ -44,11 +44,15 @@ router.route('/mockapi/mock/:mockid')
                     }
                 }
 
-                if (!method.code) {
-                    method.code = 200; //Fallback
+                if (!method) {
+                    res.status(404).json({
+                        "code": 404,
+                        "status": 'No Method for VERB',
+                        "message": "No methods were found for this mock for the requested verb"
+                    });
                 }
 
-                res.status(method.code).json(method.data);
+                res.status(method.code || 200).json(method.data);
             });
         }
     });
