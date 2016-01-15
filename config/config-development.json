@@ -1,4 +1,13 @@
 {
+    "config": {
+        "HOSTNAME": "localhost",
+        "PORT": 3000,
+        "HTTPS_PORT": 3443
+    },
+    "SSL": {
+        "PRIVATE_KEY": "./keys/server.key",
+        "CERTIFICATE": "./keys/server.crt"
+    },
     "gallery_api": {
         "CONTEXT_ROOT": "http://localhost:3000"
     }

@@ -25,7 +25,10 @@ router.route('/api/mock/:mockid')
 
 .put(function(req, res, next) {
 
-    if (!(req.body.name && req.body.responseData)) {
+    //TODO: responseData, responseCode, responseMethod are deprecated.
+    // On creation, the POST method creates a Method document of Method schema instead.
+    // Need to remove logic to store response data/code/method here
+    if (!req.body.name) {
         res.status(500).json({
             "code": 500,
             "status": 'Missing required parameters',
@@ -52,7 +55,7 @@ router.route('/api/mock/:mockid')
         }
     };
 
-    Mock.findByIdAndUpdate(req.params.mockid, mockData, function(err, mock){
+    Mock.findByIdAndUpdate(req.params.mockid, mockData, {new:true}, function(err, mock){
         if (err) {
             res.status(500).json({
                 "code": 500,

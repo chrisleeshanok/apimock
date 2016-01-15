@@ -15,17 +15,18 @@ var MocksEdit = React.createClass({
 
     putForm: function() {
 
-        if (!(this.refs.name.value)) {
+        if (!this.refs.name.value) {
             this.setState({ error: true });
             return;
         }
+        //TODO: cleanup code, method, and data. Deprecated
 
         var data = {
             "name": this.refs.name.value,
             "description": this.refs.description.value,
             "author": this.refs.author.value,
             "componentName": this.refs.componentName.value,
-            "responseData": {"null": "null"},
+            "responseData": JSON.stringify({"null":"null}"}),
             "componentProduct": this.refs.componentProduct.value,
             "responseCode": 200,
             "responseMethod": "GET"
@@ -48,6 +49,7 @@ var MocksEdit = React.createClass({
     },
 
     cancelForm: function() {
+        //Just plain navigate back to the root
         window.location = this.props.context_root + '/mocks';
     },
 

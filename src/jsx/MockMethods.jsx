@@ -23,7 +23,7 @@ var MockMethod = React.createClass({
     },
 
     putUpdate: function() {
-
+        //TODO: Validation
         var payload = {
             endpointId: this.state.method.endpointId,
             code: $("#selectCodeMenu" + this.state.method.method).val(),
@@ -158,6 +158,7 @@ var MockMethods = React.createClass({
 
     calculateAvailableVerbs: function() {
         //Warning - Shitty code for the sake of time to demo
+        //TODO: Clean up this diaper method
         var responseVerbs = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'];
         var availableVerbs = [];
         var i;
@@ -188,7 +189,7 @@ var MockMethods = React.createClass({
     },
 
     postVerb: function() {
-
+        //TODO: Validation
         var payload = {
             endpointId: this.props.mock._id,
             code: 200,

@@ -17,6 +17,7 @@ router.route('/mockapi/mock/:mockid')
             });
         } else {
 
+            //TODO: Optimization: Also change the query below to search by req.method 
             //Now fetch Methods related to this mockid
             Method.find({endpointId: mock.id}).exec(function(methodErr, methods) {
                 if (methodErr) {
@@ -56,24 +57,6 @@ router.route('/mockapi/mock/:mockid')
             });
         }
     });
-    // Mock.findById(req.params.mockid, function(err, mock) {
-    //
-    //     if (err) {
-    //         res.status(404).json({
-    //             "code": 404,
-    //             "status": 'Not Found',
-    //             "message": "No mock data found by this id"
-    //         });
-    //     }
-    //
-    //     var responseCode = mock.response.code;
-    //
-    //     if (!responseCode) {
-    //         responseCode = 200; //Fallback
-    //     }
-    //
-    //     res.status(responseCode).json(mock.response.data);
-    // });
 });
 
 router.route('/mockapi/mock')
