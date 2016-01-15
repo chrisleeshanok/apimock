@@ -6,5 +6,9 @@
     },
     "gallery_api": {
         "CONTEXT_ROOT": "http://localhost:3000"
+    },
+    "SSL": {
+        "PRIVATE_KEY": "./keys/server.key",
+        "CERTIFICATE": "./keys/server.crt"
     }
 }

@@ -29,8 +29,12 @@ var app = express();
 
 //nconf setup
 nconf.argv()
-     .env()
-     .file({file: './config/config-' + app.get('env') + '.json'});
+     .env();
+if (process.env.NODE_ENV) {
+    nconf.file({file: './config/config-' + app.get('env') + '.json'});
+}
+nconf.file('default', './config/config.json');
+
 
 // view engine setup
 app.engine('dust', cons.dust);
