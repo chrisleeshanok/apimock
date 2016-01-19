@@ -34,7 +34,7 @@ var MocksCreate = React.createClass({
 
         $.ajax({
             type: 'POST',
-            url: '/api/mock',
+            url: '/mockingbird/api/mock',
             data: data,
             dataType: 'json',
             success: function(response){

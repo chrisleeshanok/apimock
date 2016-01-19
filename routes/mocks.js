@@ -6,7 +6,7 @@ var router = express.Router();
 var Mock = require('../models/mock');
 var Method = require('../models/method');
 
-router.route('/mocks')
+router.route('/mockingbird/mocks')
 
 .get(function(req, res, next) {
     Mock.find({}, function(err, mocks) {
@@ -19,7 +19,8 @@ router.route('/mocks')
         } else {
             res.render('mocks', {
                 "mocks": mocks,
-                "context_root": nconf.get('gallery_api').CONTEXT_ROOT
+                "context_root": nconf.get('ROUTING').CONTEXT_ROOT,
+                "hello": "Hello World"
             });
         }
     });
@@ -35,14 +36,14 @@ router.route('/mocks')
     next(new Error('Not implemented'));
 });
 
-router.route('/mocks/create')
+router.route('/mockingbird/mocks/create')
 .get(function(req, res, next) {
     res.render('mocks_create', {
-        "context_root": nconf.get('gallery_api').CONTEXT_ROOT
+        "context_root": nconf.get('ROUTING').CONTEXT_ROOT
     });
 });
 
-router.route('/mocks/edit/:mockid')
+router.route('/mockingbird/mocks/edit/:mockid')
 .get(function(req, res, next) {
     Mock.findById(req.params.mockid, function(err, mock) {
         if (err) {
@@ -66,7 +67,7 @@ router.route('/mocks/edit/:mockid')
                 res.render('mocks_edit', {
                     "mock": JSON.stringify(mock),
                     "methods": JSON.stringify(methods),
-                    "context_root": nconf.get('gallery_api').CONTEXT_ROOT
+                    "context_root": nconf.get('ROUTING').CONTEXT_ROOT
                 });
             });
         }

@@ -30,10 +30,10 @@ var app = express();
 //nconf setup
 nconf.argv()
      .env();
-if (process.env.NODE_ENV) {
-    nconf.file({file: './config/config-' + app.get('env') + '.json'});
-}
-nconf.file('default', './config/config.json');
+// if (process.env.NODE_ENV) {
+//     nconf.file({file: './config/config-' + app.get('env') + '.json'});
+// }
+nconf.file({ file: 'config/config.json'});
 
 
 // view engine setup
@@ -49,7 +49,6 @@ app.use(bodyParser.urlencoded({
     limit: '200kb'
  }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 //CORS
 app.use(function(req, res, next) {
@@ -58,9 +57,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+var routing = nconf.get('ROUTING');
+
 //Statics
-app.use('/bower_components', express.static(__dirname + '/bower_components'));
-app.use('/public', express.static(__dirname + '/public'));
+app.use(routing.APP_URI + '/bower_components', express.static(__dirname + '/bower_components'));
+app.use(routing.APP_URI + '/public', express.static(__dirname + '/public'));
 
 //Routes
 app.use(mock_api_router);  // (/mockapi/mock/:mockid)
@@ -105,7 +106,7 @@ app.use(function(err, req, res, next) {
 /**
  * Get port from environment and store in Express.
  */
- var serverConfig = nconf.get('config');
+ var serverConfig = nconf.get('CONFIG');
 
 //TODO: MOVE PORT TO CONFIG
 var port = normalizePort(serverConfig.PORT);

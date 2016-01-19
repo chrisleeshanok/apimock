@@ -32,7 +32,7 @@ var MocksEdit = React.createClass({
             "responseMethod": "GET"
         };
 
-        var url = '/api/mock/' + this.state.mock._id;
+        var url = '/mockingbird/api/mock/' + this.state.mock._id;
 
         $.ajax({
             type: 'PUT',

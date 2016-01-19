@@ -5,7 +5,7 @@ var router = express.Router();
 var Mock = require('../../models/mock');
 var Method = require('../../models/method');
 
-router.route('/mockapi/mock/:mockid')
+router.route('/mockingbird/mockapi/mock/:mockid')
 
 .all(function(req, res, next) {
     Mock.findById(req.params.mockid, function(err, mock) {
@@ -17,7 +17,7 @@ router.route('/mockapi/mock/:mockid')
             });
         } else {
 
-            //TODO: Optimization: Also change the query below to search by req.method 
+            //TODO: Optimization: Also change the query below to search by req.method
             //Now fetch Methods related to this mockid
             Method.find({endpointId: mock.id}).exec(function(methodErr, methods) {
                 if (methodErr) {
@@ -59,7 +59,7 @@ router.route('/mockapi/mock/:mockid')
     });
 });
 
-router.route('/mockapi/mock')
+router.route('/mockingbird/mockapi/mock')
 .all(function(req, res, next) {
     res.status(404).json({
         "code": 404,

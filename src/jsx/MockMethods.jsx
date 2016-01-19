@@ -31,7 +31,7 @@ var MockMethod = React.createClass({
             data: this.refs.responseData.value
         };
 
-        var url = '/api/method/' + this.state.method._id;
+        var url = '/mockingbird/api/method/' + this.state.method._id;
 
         $.ajax({
             type: 'PUT',
@@ -199,7 +199,7 @@ var MockMethods = React.createClass({
             })
         };
 
-        var url = '/api/method';
+        var url = '/mockingbird/api/method';
 
         $.ajax({
             type: 'POST',

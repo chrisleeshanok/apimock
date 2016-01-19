@@ -1,11 +1,12 @@
 {
-    "config": {
+    "CONFIG": {
         "HOSTNAME": "localhost",
         "PORT": 3000,
         "HTTPS_PORT": 3443
     },
-    "gallery_api": {
-        "CONTEXT_ROOT": "http://localhost:3000"
+    "ROUTING": {
+        "CONTEXT_ROOT": "http://localhost/mockingbird",
+        "APP_URI": "/mockingbird"
     },
     "SSL": {
         "PRIVATE_KEY": "./keys/server.key",

@@ -5,7 +5,7 @@ var router = express.Router();
 var Mock = require('../../models/mock');
 var Method = require('../../models/method');
 
-router.route('/api/mock/:mockid')
+router.route('/mockingbird/api/mock/:mockid')
 
 .get(function(req, res, next) {
 
@@ -81,7 +81,7 @@ router.route('/api/mock/:mockid')
 
 //Catchall for no mockid param supplied
 //Only POST should reach this
-router.route('/api/mock')
+router.route('/mockingbird/api/mock')
 
 .post(function(req, res) {
 

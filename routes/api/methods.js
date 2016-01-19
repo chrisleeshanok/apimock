@@ -3,7 +3,7 @@ var router = express.Router();
 
 var Method = require('../../models/method');
 
-router.route('/api/method/:methodid')
+router.route('/mockingbird/api/method/:methodid')
 
 .get(function(req, res, next) {
     Method.findById(req.params.methodid, function(err, method) {
@@ -56,7 +56,7 @@ router.route('/api/method/:methodid')
 
 
 
-router.route('/api/method')
+router.route('/mockingbird/api/method')
 
 .post(function(req, res, next) {
 

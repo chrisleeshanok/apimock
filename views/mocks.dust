@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-right">
-                <a href="/mocks/create">
+                <a href="/mockingbird/mocks/create">
                     <button class="btn btn-primary">Create New Mock</button>
                 </a>
             </div>
@@ -30,7 +30,7 @@
                     <td>{component.product}</td>
                     <td>{context_root}/mockapi/mock/{_id}</td>
                     <td class="text-right">
-                        <a href="/mocks/edit/{_id}"</a><button class="btn btn-warning">Edit</button></a>
+                        <a href="/mockingbird/mocks/edit/{_id}"</a><button class="btn btn-warning">Edit</button></a>
                     </td>
                 </tr>
             {/mocks}
