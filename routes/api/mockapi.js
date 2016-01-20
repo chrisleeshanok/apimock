@@ -37,7 +37,7 @@ router.route('/mockingbird/mockapi/mock/:mockid')
                 }
 
                 var i;
-                var method;
+                var method = null;
                 for (i = 0; i < methods.length; i++) {
                     if (methods[i].method == req.method) {
                         method = methods[i];
@@ -51,9 +51,9 @@ router.route('/mockingbird/mockapi/mock/:mockid')
                         "status": 'No Method for VERB',
                         "message": "No methods were found for this mock for the requested verb"
                     });
+                } else {
+                    res.status(method.code || 200).json(method.data);
                 }
-
-                res.status(method.code || 200).json(method.data);
             });
         }
     });

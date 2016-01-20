@@ -31,7 +31,7 @@ var MockMethod = React.createClass({
             data: this.refs.responseData.value
         };
 
-        var url = '/mockingbird/api/method/' + this.state.method._id;
+        var url = this.props.context_root + '/api/method/' + this.state.method._id;
 
         $.ajax({
             type: 'PUT',
@@ -199,7 +199,7 @@ var MockMethods = React.createClass({
             })
         };
 
-        var url = '/mockingbird/api/method';
+        var url = this.props.context_root + '/api/method';
 
         $.ajax({
             type: 'POST',
@@ -233,8 +233,8 @@ var MockMethods = React.createClass({
                     </div>
                     <div className="col-md-12">
                     {this.state.methods.map(function(method) {
-                        return <MockMethod key={method.id + method.code + method.method} method={method}/>
-                    })}
+                        return <MockMethod context_root={this.props.context_root} key={method._id + method.code + method.method} method={method}/>
+                    }.bind(this))}
                     </div>
                 </div>
             );
@@ -252,8 +252,8 @@ var MockMethods = React.createClass({
                     </div>
                     <div className="col-md-12">
                     {this.state.methods.map(function(method) {
-                        return <MockMethod key={method.id} method={method}/>
-                    })}
+                        return <MockMethod context_root={this.props.context_root} key={method._id + method.code + method.method} method={method}/>
+                    }.bind(this))}
                     </div>
                 </div>
             );

@@ -32,7 +32,7 @@ var MocksEdit = React.createClass({
             "responseMethod": "GET"
         };
 
-        var url = '/mockingbird/api/mock/' + this.state.mock._id;
+        var url = this.props.context_root + '/api/mock/' + this.state.mock._id;
 
         $.ajax({
             type: 'PUT',
@@ -113,7 +113,7 @@ var MocksEdit = React.createClass({
                     <div className="col-md-12">
                     <h3>Endpoint VERBS</h3>
                     <p>Below you will find verbs associated with this endpoint</p>
-                        <MockMethods mock={this.state.mock} methods={this.props.methods}/>
+                        <MockMethods context_root={this.props.context_root} mock={this.state.mock} methods={this.props.methods}/>
                     </div>
                 </div>
 
