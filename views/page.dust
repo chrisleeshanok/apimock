@@ -15,7 +15,7 @@
         <nav class="x1-ui-top-navigation navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/mocks">
+                    <a class="navbar-brand" href="{context_root}/mocks">
                         Mockingbird | Mock-up your data
                     </a>
                 </div>
