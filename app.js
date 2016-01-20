@@ -30,10 +30,10 @@ var app = express();
 //nconf setup
 nconf.argv()
      .env();
-// if (process.env.NODE_ENV) {
-//     nconf.file({file: './config/config-' + app.get('env') + '.json'});
-// }
-nconf.file({ file: 'config/config.json'});
+if (process.env.NODE_ENV) {
+    nconf.file('environment', './config/config-' + app.get('env') + '.json');
+}
+nconf.file('default', 'config/config.json');
 
 
 // view engine setup

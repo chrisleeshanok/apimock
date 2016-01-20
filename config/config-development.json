@@ -7,9 +7,5 @@
     "ROUTING": {
         "CONTEXT_ROOT": "http://localhost:4000/mockingbird",
         "APP_URI": "/mockingbird"
-    },
-    "SSL": {
-        "PRIVATE_KEY": "./keys/server.key",
-        "CERTIFICATE": "./keys/server.crt"
     }
 }
