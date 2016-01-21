@@ -13,11 +13,12 @@ var nconf = require('nconf');
 var fs = require('fs');
 
 //Routers
-var indexrouter = require('./routes/index');
+var index_router = require('./routes/index');
 var mock_api_router = require('./routes/api/mockapi');
 var api_router = require('./routes/api/mock');
 var method_api_router = require('./routes/api/methods');
 var mocks_router = require('./routes/mocks');
+var status_router = require('./routes/status');
 
 //mongodb
 var mongo = require('mongodb');
@@ -64,7 +65,8 @@ app.use(routing.APP_URI + '/bower_components', express.static(__dirname + '/bowe
 app.use(routing.APP_URI + '/public', express.static(__dirname + '/public'));
 
 //Routes
-app.use(indexrouter);
+app.use(index_router);
+app.use(status_router);
 app.use(mock_api_router);  // (/mockapi/mock/:mockid)
 app.use(api_router);  // (/api/mock/:mockid)
 app.use(method_api_router);  // (/api/method/:methodid)
