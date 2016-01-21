@@ -1,5 +1,6 @@
 var React = require('react');
 var $ = require('jquery');
+var Clipboard = require('clipboard');
 
 var MockMethods = require('./MockMethods.jsx');
 
@@ -11,6 +12,10 @@ var MocksEdit = React.createClass({
             updated: false,
             error: false
         };
+    },
+
+    componentDidMount: function() {
+        new Clipboard('.clipboardButton');
     },
 
     putForm: function() {
@@ -62,13 +67,19 @@ var MocksEdit = React.createClass({
         return (
             <div className="container">
                 <div className="row">
-                    <div className="col-md-9">
-                        <h1>Update {this.props.mock.name}</h1>
-                        <p>{this.props.context_root + '/mockapi/mock/' + this.state.mock._id}</p>
-
-                    </div>
-                    <div className="col-md-3 text-right">
+                    <div className="col-md-1">
                         <button style={{marginTop: '20px'}} onClick={this.cancelForm} type="submit" className="btn btn-secondary">Back</button>
+                    </div>
+                    <div className="col-md-11">
+                        <h1>Update {this.props.mock.name}</h1>
+                        <div className="input-group">
+                            <input id="endpointURL" className="form-control endpointURL" type="text" value={this.props.context_root + '/mockapi/mock/' + this.state.mock._id} readOnly></input>
+                            <div className="input-group-btn">
+                                <button className="btn btn-default clipboardButton" data-clipboard-target="#endpointURL">Copy</button>
+                            </div>
+                        </div>
+                        <p></p>
+
                     </div>
                 </div>
                 <hr/>
