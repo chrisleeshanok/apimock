@@ -64,6 +64,7 @@ app.use(routing.APP_URI + '/bower_components', express.static(__dirname + '/bowe
 app.use(routing.APP_URI + '/public', express.static(__dirname + '/public'));
 
 //Routes
+app.use(indexrouter);
 app.use(mock_api_router);  // (/mockapi/mock/:mockid)
 app.use(api_router);  // (/api/mock/:mockid)
 app.use(method_api_router);  // (/api/method/:methodid)
