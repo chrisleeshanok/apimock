@@ -28,7 +28,14 @@
                     <td>{metadata.author}</td>
                     <td>{component.name}</td>
                     <td>{component.product}</td>
-                    <td>{context_root}/mockapi/mock/{_id}</td>
+                    <td class="endpointCell">
+                        <div class="input-group">
+                            <input id="endpoint{_id}" class="form-control endpointURL" type="text" readonly value="{context_root}/mockapi/mock/{_id}"></input>
+                            <div class="input-group-btn">
+                                <button class="btn btn-default clipboardButton" data-clipboard-target="#endpoint{_id}">Copy</button>
+                            </div>
+                        </div>
+                    </td>
                     <td class="text-right">
                         <a href="{context_root}/mocks/edit/{_id}"</a><button class="btn btn-warning">Edit</button></a>
                     </td>
@@ -36,5 +43,5 @@
             {/mocks}
         </table>
     </div>
-    <div id="reactContainer"></div>
+    <script src="{context_root}/public/js/mocks.js"></script>
 {/content}

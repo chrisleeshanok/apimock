@@ -18,6 +18,10 @@ var pages = [
     {
         "location": "./src/mocks_edit.js",
         "filename": "mocks_edit.js"
+    },
+    {
+        "location": "./src/mocks.js",
+        "filename": "mocks.js"
     }
 ];
 

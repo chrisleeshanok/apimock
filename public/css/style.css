@@ -12,6 +12,11 @@ body > nav {
 a {
   color: #00B7FF; }
 
+.endpointCell {
+  width: 710px; }
+  .endpointCell input {
+    font-size: 0.9em; }
+
 .json-field {
   min-height: 150px;
   font-size: 0.9em; }
